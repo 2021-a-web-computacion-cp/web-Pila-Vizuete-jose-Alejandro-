@@ -23,6 +23,22 @@ let UsuarioService = class UsuarioService {
             },
         });
     }
+    buscarMuchos(parametrosBusqueda) {
+        const or = parametrosBusqueda.busqueda
+            ? {
+                OR: [
+                    { nombre: { contains: parametrosBusqueda.busqueda } },
+                    { apellido: { contains: parametrosBusqueda.busqueda } },
+                ],
+            }
+            : {};
+        console.log(or);
+        return this.prisma.cITA_MEDICA.findMany({
+            where: or,
+            take: Number(parametrosBusqueda.take) || undefined,
+            skip: Number(parametrosBusqueda.skip) || undefined,
+        });
+    }
 };
 UsuarioService = __decorate([
     (0, common_1.Injectable)(),
