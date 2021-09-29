@@ -17,9 +17,9 @@ let UsuarioService = class UsuarioService {
         this.prisma = prisma;
     }
     buscarUno(id) {
-        this.prisma.cITA_MEDICA.findUnique({
+        return this.prisma.cITA_MEDICA.findUnique({
             where: {
-                id: id,
+                id_cita: id,
             },
         });
     }
