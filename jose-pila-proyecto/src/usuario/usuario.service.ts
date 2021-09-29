@@ -26,6 +26,7 @@ export class UsuarioService {
           OR: [
             { nombre: { contains: parametrosBusqueda.busqueda } },
             { apellido: { contains: parametrosBusqueda.busqueda } },
+            { categoria: { contains: parametrosBusqueda.busqueda } },
           ],
         }
       : {};
@@ -49,6 +50,7 @@ export class UsuarioService {
       where: { id_cita: id },
     });
   }
+  /*Funcion para actualizar la cita medica de los usuarios*/
   actualizarUno(parametrosActualizar: {
     id: number;
     data: Prisma.CITA_MEDICAUpdateInput;

@@ -29,6 +29,7 @@ let UsuarioService = class UsuarioService {
                 OR: [
                     { nombre: { contains: parametrosBusqueda.busqueda } },
                     { apellido: { contains: parametrosBusqueda.busqueda } },
+                    { categoria: { contains: parametrosBusqueda.busqueda } },
                 ],
             }
             : {};
@@ -37,6 +38,24 @@ let UsuarioService = class UsuarioService {
             where: or,
             take: Number(parametrosBusqueda.take) || undefined,
             skip: Number(parametrosBusqueda.skip) || undefined,
+        });
+    }
+    crearNuevo(cita) {
+        return this.prisma.cITA_MEDICA.create({
+            data: cita,
+        });
+    }
+    eliminarCita(id) {
+        return this.prisma.cITA_MEDICA.delete({
+            where: { id_cita: id },
+        });
+    }
+    actualizarUno(parametrosActualizar) {
+        return this.prisma.cITA_MEDICA.update({
+            data: parametrosActualizar.data,
+            where: {
+                id_cita: parametrosActualizar.id,
+            },
         });
     }
 };
