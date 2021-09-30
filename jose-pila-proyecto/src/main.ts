@@ -6,7 +6,7 @@ const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app: any = await NestFactory.create(AppModule);
   app.use(express.static('publico'));
   app.use(cookieParser('Este es un texto'));
   app.use(
@@ -19,6 +19,8 @@ async function bootstrap() {
       store: new FileStore(),
     }),
   );
+  app.set('view engine', 'ejs');
+
   await app.listen(3000);
 }
 bootstrap();

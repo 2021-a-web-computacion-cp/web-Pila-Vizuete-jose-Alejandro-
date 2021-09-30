@@ -18,6 +18,7 @@ async function bootstrap() {
         cookie: { secure: false },
         store: new FileStore(),
     }));
+    app.set('view engine', 'ejs');
     await app.listen(3000);
 }
 bootstrap();

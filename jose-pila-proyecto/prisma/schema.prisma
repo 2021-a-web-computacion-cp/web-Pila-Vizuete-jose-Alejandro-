@@ -12,7 +12,9 @@ model CITA_MEDICA {
     id_cita         Int         @id @default(autoincrement())
     nombre          String
     apellido        String
+    cedula          String
     categoria       String
     fecha_registo   DateTime    @default(now())
     seguro_social   Boolean     @default(false)
+
 }

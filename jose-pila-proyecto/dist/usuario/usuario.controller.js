@@ -19,19 +19,45 @@ let UsuarioController = class UsuarioController {
     constructor(usuarioService) {
         this.usuarioService = usuarioService;
     }
-    obtenerUno(parametrosRuta) {
-        return this.usuarioService.buscarUno(+parametrosRuta.idUsuario);
+    inicio(response) {
+        response.render('inicio');
+    }
+    async listaCita(response, parametrosConsulta) {
+        try {
+            const respuesta = await this.usuarioService.buscarMuchos({
+                skip: parametrosConsulta.skip ? +parametrosConsulta.skip : undefined,
+                take: parametrosConsulta.take ? +parametrosConsulta.take : undefined,
+                busqueda: parametrosConsulta.busqueda ? parametrosConsulta.busqueda : undefined,
+            });
+            response.render('usuario/buscar', {
+                datos: {
+                    usuarios: respuesta,
+                    mensaje: parametrosConsulta.mensaje,
+                },
+            });
+        }
+        catch (error) {
+            throw new common_1.InternalServerErrorException('Error del servidor');
+        }
     }
 };
 __decorate([
-    (0, common_1.Get)(':idUsuario'),
-    __param(0, (0, common_1.Param)()),
+    (0, common_1.Get)('inicio'),
+    __param(0, (0, common_1.Res)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
-], UsuarioController.prototype, "obtenerUno", null);
+], UsuarioController.prototype, "inicio", null);
+__decorate([
+    (0, common_1.Get)('lista-citas'),
+    __param(0, (0, common_1.Res)()),
+    __param(1, (0, common_1.Query)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", Promise)
+], UsuarioController.prototype, "listaCita", null);
 UsuarioController = __decorate([
-    (0, common_1.Controller)('usuario'),
+    (0, common_1.Controller)('cita'),
     __metadata("design:paramtypes", [usuario_service_1.UsuarioService])
 ], UsuarioController);
 exports.UsuarioController = UsuarioController;

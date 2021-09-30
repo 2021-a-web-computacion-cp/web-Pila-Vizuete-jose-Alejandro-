@@ -16,25 +16,25 @@ export class UsuarioService {
 
   /*Funcion para BuscarMuchos usuarios para la lista
    de usuarios con el mismo nombre*/
-  buscarMuchos(parametrosBusqueda: {
+  buscarMuchos(parametros: {
     skip?: number;
     take?: number;
     busqueda?: string;
   }) {
-    const or = parametrosBusqueda.busqueda
+    const or = parametros.busqueda
       ? {
           OR: [
-            { nombre: { contains: parametrosBusqueda.busqueda } },
-            { apellido: { contains: parametrosBusqueda.busqueda } },
-            { categoria: { contains: parametrosBusqueda.busqueda } },
+            { nombre: { contains: parametros.busqueda } },
+            { apellido: { contains: parametros.busqueda } },
+            { cedula: { contains: parametros.busqueda } },
+            { categoria: { contains: parametros.busqueda } },
           ],
         }
       : {};
-    console.log(or);
     return this.prisma.cITA_MEDICA.findMany({
       where: or,
-      take: Number(parametrosBusqueda.take) || undefined,
-      skip: Number(parametrosBusqueda.skip) || undefined,
+      take: Number(parametros.take) || undefined,
+      skip: Number(parametros.skip) || undefined,
     });
   }
 

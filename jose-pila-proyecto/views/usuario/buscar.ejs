@@ -1,0 +1,63 @@
+<%- include('../comunes/cabecera') %>
+<h1>Citas agendadas</h1>
+<%- include('../comunes/footer') %>
+<form action='/cita/lista-citas' method='get'>
+    <div class="mb-3">
+        <label for="busqueda" class="form-label">
+            Busqueda
+        </label>
+        <input placeholder="Ej: Jose"
+               type="text"
+               name="busqueda"
+               class="form-control"
+               id="busqueda"
+               aria-describedby="ayudaBusqueda">
+        <div id="ayudaBusqueda" class="form-text">
+            Puede buscar por nombre, apellido, categoria,
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Buscar</button>
+</form>
+<div>
+    <a href='/cita/crear-cita'>
+        <button class='btn btn-success'>
+            Registrar nueva Cita
+        </button>
+    </a>
+</div>
+<!--Creacion de la tabla-->
+<table class='table text-center'>
+    <thead>
+    <tr>
+        <th scope="col"># id </th>
+        <th scope="col">Nombres Paciente</th>
+        <th scope="col">Apellidos Paciente</th>
+        <th scope="col">Nro. Cedula</th>
+        <th scope="col">Especialidad</th>
+        <th scope="col">Afiliado al seguro</th>
+        <th scope='col'>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% datos.usuarios.forEach( (objeto) => { %>
+        <tr>
+            <th><%= objeto.id_cita %></th>
+            <th><%= objeto.nombre %></th>
+            <th><%= objeto.apellido %></th>
+            <th><%= objeto.cedula %></th>
+            <th><%= objeto.categoria %></th>
+            <th><%= objeto.seguro_social %></th>
+            <th>
+                <form   action='/cita/eliminar-cita/<%= objeto.id %>'
+                        method='post'>
+                    <button class='btn btn-danger'>Eliminar</button>
+                </form>
+                <form   action='/cita/actualizar-cita/<%= objeto.id %>'
+                        method='post'>
+                    <button class='btn btn-danger'>Actualizar</button>
+                </form>
+            </th>
+        </tr>
+    <% } )%>
+    </tbody>
+</table>

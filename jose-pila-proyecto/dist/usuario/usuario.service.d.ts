@@ -4,7 +4,7 @@ export declare class UsuarioService {
     private prisma;
     constructor(prisma: PrismaService);
     buscarUno(id: number): Prisma.Prisma__CITA_MEDICAClient<import(".prisma/client").CITA_MEDICA>;
-    buscarMuchos(parametrosBusqueda: {
+    buscarMuchos(parametros: {
         skip?: number;
         take?: number;
         busqueda?: string;
