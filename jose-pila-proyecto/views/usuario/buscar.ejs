@@ -12,7 +12,7 @@
 <form action='/cita/lista-citas' method='get'>
     <div class="mb-3">
         <label for="busqueda" class="form-label">
-            Busqueda
+            Busqueda:
         </label>
         <input placeholder="Ej: Jose"
                type="text"
@@ -26,6 +26,10 @@
     </div>
     <button type="submit" class="btn btn-primary w-100">Buscar</button>
 </form>
+<br>
+<div id="nuevoRegistro" class="form-text">
+    Desea agendar una nueva Cita:
+</div>
 <div>
     <a href='/cita/crear-cita'>
         <button class='btn btn-success'>
@@ -33,6 +37,7 @@
         </button>
     </a>
 </div>
+
 <!--Creacion de la tabla-->
 <table class='table text-center' border='1'>
     <thead>
