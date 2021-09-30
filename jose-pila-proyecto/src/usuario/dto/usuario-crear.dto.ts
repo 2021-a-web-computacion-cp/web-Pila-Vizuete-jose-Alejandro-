@@ -1,27 +1,24 @@
-import { IsNotEmpty, IsString, Max, Min } from 'class-validator';
+import { IsNotEmpty, IsString, Max, maxLength, MaxLength, Min, minLength, MinLength } from 'class-validator';
 
 export class UsuarioCrearDto {
   @IsNotEmpty()
   @IsString()
-  @Min(2)
-  @Max(12)
+  @MinLength(2)
+  @MaxLength(22)
   nombre: string;
 
   @IsNotEmpty()
   @IsString()
-  @Min(2)
-  @Max(12)
+  @MinLength(2)
+  @MaxLength(22)
   apellido: string;
 
   @IsNotEmpty()
-  fecha_registro: string;
-
-  @IsNotEmpty()
-  seguro_social: string;
+  @MinLength(10)
+  @MaxLength(20)
+  cedula: string;
 
   @IsNotEmpty()
   @IsString()
-  @Min(2)
-  @Max(12)
   categoria: string;
 }

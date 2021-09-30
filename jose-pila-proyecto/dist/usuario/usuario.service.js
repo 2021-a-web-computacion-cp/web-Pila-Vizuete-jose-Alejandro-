@@ -40,7 +40,7 @@ let UsuarioService = class UsuarioService {
             skip: Number(parametros.skip) || undefined,
         });
     }
-    crearNuevo(cita) {
+    crearCita(cita) {
         return this.prisma.cITA_MEDICA.create({
             data: cita,
         });

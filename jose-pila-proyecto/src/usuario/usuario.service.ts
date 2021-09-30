@@ -39,7 +39,7 @@ export class UsuarioService {
   }
 
   /*Funcion CrearNuevo este permite crear una nueva cita medica*/
-  crearNuevo(cita: Prisma.CITA_MEDICACreateInput) {
+  crearCita(cita: Prisma.CITA_MEDICACreateInput) {
     return this.prisma.cITA_MEDICA.create({
       data: cita,
     });
@@ -51,10 +51,7 @@ export class UsuarioService {
     });
   }
   /*Funcion para actualizar la cita medica de los usuarios*/
-  actualizarUno(parametrosActualizar: {
-    id: number;
-    data: Prisma.CITA_MEDICAUpdateInput;
-  }) {
+  actualizarUno(parametrosActualizar: { id: number; data }) {
     return this.prisma.cITA_MEDICA.update({
       data: parametrosActualizar.data,
       where: {

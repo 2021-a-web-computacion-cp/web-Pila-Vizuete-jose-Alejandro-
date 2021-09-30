@@ -9,10 +9,10 @@ export declare class UsuarioService {
         take?: number;
         busqueda?: string;
     }): import(".prisma/client").PrismaPromise<import(".prisma/client").CITA_MEDICA[]>;
-    crearNuevo(cita: Prisma.CITA_MEDICACreateInput): Prisma.Prisma__CITA_MEDICAClient<import(".prisma/client").CITA_MEDICA>;
+    crearCita(cita: Prisma.CITA_MEDICACreateInput): Prisma.Prisma__CITA_MEDICAClient<import(".prisma/client").CITA_MEDICA>;
     eliminarCita(id: number): Prisma.Prisma__CITA_MEDICAClient<import(".prisma/client").CITA_MEDICA>;
     actualizarUno(parametrosActualizar: {
         id: number;
-        data: Prisma.CITA_MEDICAUpdateInput;
+        data: any;
     }): Prisma.Prisma__CITA_MEDICAClient<import(".prisma/client").CITA_MEDICA>;
 }

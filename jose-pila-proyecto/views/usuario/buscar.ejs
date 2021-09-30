@@ -1,4 +1,12 @@
 <%- include('../comunes/cabecera') %>
+<% const existeMensaje = typeof datos.mensaje !== 'undefined' %>
+<% if(existeMensaje) {%>
+    <div>
+        <div class='alert alert-success' role='alert'>
+            <%= datos.mensaje%>
+        </div>
+    </div>
+<%}%>
 <h1>Citas agendadas</h1>
 <%- include('../comunes/footer') %>
 <form action='/cita/lista-citas' method='get'>
@@ -26,7 +34,7 @@
     </a>
 </div>
 <!--Creacion de la tabla-->
-<table class='table text-center'>
+<table class='table text-center' border='1'>
     <thead>
     <tr>
         <th scope="col"># id </th>
@@ -48,11 +56,11 @@
             <th><%= objeto.categoria %></th>
             <th><%= objeto.seguro_social %></th>
             <th>
-                <form   action='/cita/eliminar-cita/<%= objeto.id %>'
+                <form   action='/cita/eliminar-cita/<%= objeto.id_cita %>'
                         method='post'>
                     <button class='btn btn-danger'>Eliminar</button>
                 </form>
-                <form   action='/cita/actualizar-cita/<%= objeto.id %>'
+                <form   action='/cita/actualizar-cita/<%= objeto.id_cita %>'
                         method='post'>
                     <button class='btn btn-danger'>Actualizar</button>
                 </form>
@@ -61,3 +69,4 @@
     <% } )%>
     </tbody>
 </table>
+<%- include('../comunes/footer') %>

@@ -16,30 +16,26 @@ class UsuarioCrearDto {
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.Min)(2),
-    (0, class_validator_1.Max)(12),
+    (0, class_validator_1.MinLength)(2),
+    (0, class_validator_1.MaxLength)(22),
     __metadata("design:type", String)
 ], UsuarioCrearDto.prototype, "nombre", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.Min)(2),
-    (0, class_validator_1.Max)(12),
+    (0, class_validator_1.MinLength)(2),
+    (0, class_validator_1.MaxLength)(22),
     __metadata("design:type", String)
 ], UsuarioCrearDto.prototype, "apellido", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.MinLength)(10),
+    (0, class_validator_1.MaxLength)(20),
     __metadata("design:type", String)
-], UsuarioCrearDto.prototype, "fecha_registro", void 0);
-__decorate([
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], UsuarioCrearDto.prototype, "seguro_social", void 0);
+], UsuarioCrearDto.prototype, "cedula", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.Min)(2),
-    (0, class_validator_1.Max)(12),
     __metadata("design:type", String)
 ], UsuarioCrearDto.prototype, "categoria", void 0);
 exports.UsuarioCrearDto = UsuarioCrearDto;
